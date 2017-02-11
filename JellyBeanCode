@@ -1,0 +1,81 @@
+package com.example.clee9.jellybean_christinelee;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.app.Activity;
+import android.support.annotation.IdRes;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+public class JellyBean extends AppCompatActivity //implements View.OnClickListener
+    {
+    private EditText JBeanLength;
+    private EditText JBeanDiameter;
+    private EditText JBeanSize;
+    public Button CalcBtn;
+    public EditText JBeanNumber;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        JBeanLength = (EditText) findViewById(R.id.JBeanLength);
+        JBeanDiameter = (EditText) findViewById(R.id.JBeanDiameter);
+        JBeanSize = (EditText) findViewById(R.id.JBeanSize);
+        JBeanNumber = (EditText) findViewById(R.id.JBeanNumber);
+        //CalcBtn = (Button) findViewById(R.id.CalcBtn);
+        //CalcBtn.setOnClickListener(this);
+
+    }
+    //@Override
+    public void onClick(View view ) {
+        Button CalcBtn = (Button) view;
+        //switch (view.getId()){
+           // case R.id.CalcBtn:
+        ((Button) view).setText("");
+        double Diameter = Double.parseDouble(JBeanDiameter.getText().toString());
+        double Length = Double.parseDouble(JBeanLength.getText().toString());
+        double JBeanSingle = (0.52) * Diameter * Diameter* Length;
+        double NumJB = Double.parseDouble(JBeanSize.getText().toString()) * 69.8 * JBeanSingle;
+        JBeanNumber.setText(Double.toString(NumJB));
+       // break;
+
+    }}
