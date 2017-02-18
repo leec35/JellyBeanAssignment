@@ -1,0 +1,53 @@
+import static org.junit.Assert.*;
+import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class RationalTest extends TestCase {
+
+	@Test
+	public void testNormalize ()
+	{
+		Rational rational = new Rational();
+		int expected[] = {-1, 2};
+		int x[] = {1, -2};
+		int actual[] = rational.normalize(x);
+		assertEquals("Flip", expected, actual);
+	}
+	public void testAdd ()
+	{
+		Rational rational = new Rational();
+		int expected[] = {-2, 8};
+		int x[] = {1, -2};
+		int y[] = {1, 4};
+		int actual[] = rational.add(x, y);
+		assertEquals("Adding -1/2 and 1/4", expected, actual);
+	}
+	public void testSubtract ()
+	{
+		Rational rational = new Rational();
+		int expected[] = {-6, 8};
+		int x[] = {1, -2};
+		int y[] = {1, 4};
+		int actual[] = rational.sub(x, y);
+		assertEquals("Subtracting 1/4 from -1/2", expected, actual);
+	}
+	public void testMultiply ()
+	{
+		Rational rational = new Rational();
+		int expected[] = {-1, 8};
+		int x[] = {1, -2};
+		int y[] = {1, 4};
+		int actual[] = rational.multiply(x, y);
+		assertEquals("Subtracting 1/4 from -1/2", expected, actual);
+	}
+	public void testDivide ()
+	{
+		Rational rational = new Rational();
+		int expected[] = {-4, 2};
+		int x[] = {1, -2};
+		int y[] = {1, 4};
+		int actual[] = rational.divide(x, y);
+		assertEquals("Subtracting 1/4 from -1/2", expected, actual);
+	}
+}
